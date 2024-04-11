@@ -1,0 +1,20 @@
+CREATE DATABASE IF NOT EXISTS blogDB;
+USE blogDB;
+
+DROP TABLE `Users`;
+CREATE TABLE IF NOT EXISTS Users(
+    id VARCHAR(60) PRIMARY KEY, 
+    email VARCHAR(100) NOT NULL,
+    password VARCHAR(255) NOT NULL
+    
+);
+
+DROP TABLE `Posts`;
+CREATE TABLE IF NOT EXISTS Posts(
+    id VARCHAR(60) PRIMARY KEY,
+    title VARCHAR(255),
+    body TEXT NOT NULL,
+    author_id VARCHAR(60) NOT NULL,
+   
+    FOREIGN KEY (author_id) REFERENCES Users (id)
+);
